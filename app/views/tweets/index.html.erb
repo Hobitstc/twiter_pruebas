@@ -1,0 +1,12 @@
+<h1>Tweets</h1>  <p> </p>
+
+
+<% @tweets.each do |tweet| %>
+    <%=link_to tweet_path(tweet.id) do%>
+        <h2><%= tweet.title%> </h2>
+    <% end %>
+        
+    <p><%=  tweet.description%></p>
+
+    
+<% end %>
