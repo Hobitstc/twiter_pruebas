@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :tweets
 
+
+ #get 'form', to: 'tweets#new' 
+
 end

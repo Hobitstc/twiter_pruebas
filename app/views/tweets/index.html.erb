@@ -1,12 +1,16 @@
-<h1>Tweets</h1>  <p> </p>
+<h1>Tweets</h1>
+
+<%= link_to "CREATE TWEET", "/tweets/new" %>
 
 
 <% @tweets.each do |tweet| %>
     <%=link_to tweet_path(tweet.id) do%>
-        <h2><%= tweet.title%> </h2>
+        <h2><%= tweet.title%> </h2> 
     <% end %>
+
+    <span><%= link_to "Delete Tweet", tweet, method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> </span>
         
-    <p><%=  tweet.description%></p>
+    <p><%= tweet.description%></p>
 
     
 <% end %>
