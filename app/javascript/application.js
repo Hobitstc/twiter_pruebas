@@ -6,4 +6,4 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 
 import "popper"
-import "bootstrap"
+import "bootstrap"import * as bootstrap from "bootstrap"

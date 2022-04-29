@@ -74,3 +74,5 @@ end
 gem "mysql2"
 
 gem "devise"
+
+gem "cssbundling-rails"

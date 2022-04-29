@@ -6,11 +6,9 @@
 <% @tweets.each do |tweet| %>
     <div>
 
-         <% if current_user.id==tweet.user_id%>
+         <% if !current_user.nil? && current_user.id==tweet.user_id%>
             <%= link_to "EDIT TWEET", edit_tweet_path(tweet.id)%>
-         <% end %>
 
-         <% if current_user.id==tweet.user_id%>
             <span><%= link_to "Delete Tweet", tweet, method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> </span>
         <% end %>
 
