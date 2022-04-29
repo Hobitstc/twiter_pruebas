@@ -1,9 +1,9 @@
-<h1>Tweets</h1>
 
-<%= link_to "CREATE TWEET", "/tweets/new" %>
+<p> <%=@user.email%> </p>
 
 
-<% @tweets.each do |tweet| %>
+<div>
+    <% @tweets.each do |tweet| %>
     <div>
 
          <% if current_user.id==tweet.user_id%>
@@ -12,7 +12,7 @@
 
          <% if current_user.id==tweet.user_id%>
             <span><%= link_to "Delete Tweet", tweet, method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> </span>
-        <% end %>
+         <% end %>
 
         <%=link_to tweet_path(tweet.id) do%>
             <h2><%= tweet.title%> </h2>
@@ -28,3 +28,6 @@
 
     
 <% end %>
+
+
+</div>

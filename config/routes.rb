@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :tweets
 
+  resources :users, only:[:show]
+
+
+
 
  #get 'form', to: 'tweets#new' 
 

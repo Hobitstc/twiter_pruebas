@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-   before_action :authenticate_user!, only:[:new,:create]
+   before_action :authenticate_user!, only:[:new,:create,:edit]
 
 
  def new
@@ -20,14 +20,24 @@ class TweetsController < ApplicationController
 
  end
 
+ def edit
+   @tweet=Tweet.find(params[:id])
+   
+
+ end
+ 
+ def update
+  @tweet=Tweet.find(params[:id])
+  @tweet.update(title: params[:tweet][:title],description: params[:tweet][:description] ) #o por funcion update(tweet_params)
+  p '@@@@@@@@@@@@@@@@'
+  p tweet_params
+ end
 
 
  def destroy
-  @tweet= Tweet.find(params[:id])
-  @tweet.destroy
-  redirect_to tweets_path
-
-
+    @tweet= Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to tweets_path
  end
 
 
@@ -35,6 +45,7 @@ class TweetsController < ApplicationController
  def index
     @tweets =Tweet.all
 
+    
  end
 
 
@@ -43,7 +54,7 @@ class TweetsController < ApplicationController
  end
 
  def tweet_params
-  params.require(:tweet).permit(:title,:description,)
+  params.require(:tweet).permit(:title,:description)
 
  end
 

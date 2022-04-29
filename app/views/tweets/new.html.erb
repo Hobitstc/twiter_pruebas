@@ -1,6 +1,1 @@
-<%= form_with model:@tweet , url: tweets_path, method: :post do |form| %>
-  <%= form.label "What do  u thigs:" %>
-  <%= form.text_field :title %>
-  <%= form.text_field :description %>
-  <%= form.submit "Create" %>
-<% end %>
+<%= render 'tweets/form'%>
