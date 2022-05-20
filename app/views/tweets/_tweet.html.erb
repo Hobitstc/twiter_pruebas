@@ -1,0 +1,45 @@
+<div class="container-md ">
+
+    
+    <% @tweets.each do |tweet| %>
+        <div class="row">
+            
+            <div class="col-8">
+                <p><%=link_to tweet.user.email,user_path(tweet.user_id)%></p>
+            </div>
+            
+
+            <div class="col-2">
+            <% if !current_user.nil? && current_user.id==tweet.user_id%>
+                <%= link_to "EDIT TWEET", edit_tweet_path(tweet.id)%>
+            </div>
+
+            <div class="col-2">
+                <span><%= link_to "Delete Tweet", tweet, method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> </span>
+            <% end %>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+
+            <div class="col">
+                <%=link_to tweet_path(tweet.id) do%>
+                    <h2><%= tweet.title%> </h2>
+                <% end %>   
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col text-center">
+                <p><%= tweet.description%></p>
+            </div> 
+
+        </div>
+        
+
+        
+    <% end %>
+</div>
