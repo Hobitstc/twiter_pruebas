@@ -12,12 +12,22 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_06_09_105228) do
   create_table "followers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+<<<<<<< main
     t.bigint "user_id", null: false
     t.bigint "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower_id"], name: "fk_rails_5b83ba9503"
     t.index ["user_id"], name: "fk_rails_3d258d3942"
+=======
+    t.bigint "user", null: false
+    t.string "follower", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.index ["user"], name: "fk_rails_8fbcdc839a"
+    t.index ["users_id"], name: "index_followers_on_users_id"
+>>>>>>> Creacion tabla followers y añadido columna name a users
   end
 
   create_table "tweets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -42,7 +52,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_105228) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< main
   add_foreign_key "followers", "users"
   add_foreign_key "followers", "users", column: "follower_id"
+=======
+  add_foreign_key "followers", "users", column: "user"
+>>>>>>> Creacion tabla followers y añadido columna name a users
   add_foreign_key "tweets", "users"
 end
