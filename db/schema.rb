@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_22_104511) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_09_105228) do
+  create_table "followers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "fk_rails_5b83ba9503"
+    t.index ["user_id"], name: "fk_rails_3d258d3942"
+  end
+
   create_table "tweets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -28,9 +37,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_22_104511) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "followers", "users"
+  add_foreign_key "followers", "users", column: "follower_id"
   add_foreign_key "tweets", "users"
 end
