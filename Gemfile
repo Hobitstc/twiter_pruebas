@@ -75,4 +75,8 @@ gem "mysql2"
 
 gem "devise"
 
+gem "rouge"
+
 gem "cssbundling-rails"
+
+gem 'draper'
