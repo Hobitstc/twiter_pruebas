@@ -43,14 +43,14 @@ class TweetsController < ApplicationController
 
 
  def index
-    @tweets =Tweet.all
+    @tweets =Tweet.all.decorate
 
     
  end
 
 
  def show
-   @tweet=Tweet.find(params[:id])
+   @tweet=Tweet.find(params[:id]).decorate
  end
 
  def tweet_params

@@ -1,11 +1,13 @@
-<p> <%= @user.name %> </p>
+<p> <%= @user.full_name %> </p>
+<p> <%= @user.count_followers %> </p>
+<p> <%= @user.count_following %> </p>
 
   <div>
-    <% if current_user.id != @user.id && @user.followers.find_by(follower_id: current_user.id) %>
+    <% if @user.find_follower %>
       <%= button_to "Unfollow", follower_path(@user.id), method: :delete, class: "btn btn-danger" %>
     <% else %>
       <%= button_to "Follow", followers_path(user_id: @user.id), method: :post, class: "btn btn-info" %>
-      <%end %>
+    <%end %>
   </div>
 
 
